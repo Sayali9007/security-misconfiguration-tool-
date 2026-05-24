@@ -1,0 +1,61 @@
+# Security Misconfiguration Detection Tool
+# ==========================================
+# README — How to Run
+#
+# STEP 1: Install dependencies
+#   pip install requests beautifulsoup4 streamlit
+#
+# ─────────────────────────────────────────
+# CLI VERSION
+# ─────────────────────────────────────────
+#   python scanner_cli.py https://example.com
+#
+#   Output:
+#   - Color-coded findings in terminal
+#   - report_<site>_<timestamp>.json  (saved in same folder)
+#   - report_<site>_<timestamp>.csv   (saved in same folder)
+#
+# ─────────────────────────────────────────
+# WEB APP VERSION (Streamlit)
+# ─────────────────────────────────────────
+#   streamlit run scanner_app.py
+#
+#   Then open browser: http://localhost:8501
+#   Enter any URL and click Scan
+#   Download JSON or CSV report from the app
+#
+# ─────────────────────────────────────────
+# WHAT IT CHECKS
+# ─────────────────────────────────────────
+#   [HIGH]     Missing Content-Security-Policy header
+#   [HIGH]     Missing Strict-Transport-Security (HSTS)
+#   [HIGH]     Wildcard CORS (Access-Control-Allow-Origin: *)
+#   [HIGH]     Directory listing enabled
+#   [HIGH]     Exposed admin/sensitive paths (200 OK)
+#   [MEDIUM]   Missing X-Frame-Options (Clickjacking)
+#   [MEDIUM]   Missing X-Content-Type-Options
+#   [MEDIUM]   Insecure cookies (no HttpOnly/Secure/SameSite)
+#   [MEDIUM]   POST forms without CSRF token
+#   [MEDIUM]   Debug/error info exposed (stack traces, PHP errors)
+#   [MEDIUM]   Exposed paths returning 301/302/403
+#   [LOW]      Server version disclosed in headers
+#   [LOW]      X-Powered-By exposed
+#   [LOW]      Missing Referrer-Policy
+#   [LOW]      Missing Permissions-Policy
+#   [LOW]      Password field without autocomplete=off
+#   [LOW]      Sensitive keywords in HTML comments
+#
+# ─────────────────────────────────────────
+# LEGAL NOTE
+# ─────────────────────────────────────────
+#   Only scan websites you own or have permission to test.
+#   This tool is for educational and authorized use only.
+#
+# Files:
+#   scanner_cli.py   — Command line version
+#   scanner_app.py   — Streamlit web app version
+#   requirements.txt — Dependencies
+
+requests>=2.28.0
+beautifulsoup4>=4.11.0
+streamlit>=1.20.0
