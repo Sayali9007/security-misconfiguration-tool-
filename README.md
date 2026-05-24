@@ -1,1 +1,2 @@
-# security-misconfiguration-tool-
+# security-misconfiguration-tool
+-A Python-based automated tool built with Flask that detects common security misconfigurations in web applications — including missing security headers, insecure CORS policies, enabled debug modes, and improper protocol usage. It classifies issues by severity and provides actionable remediation suggestions to help developers fix vulnerabilities quickly. Tested on Kali Linux, aligned with OWASP Top 10 standards.
